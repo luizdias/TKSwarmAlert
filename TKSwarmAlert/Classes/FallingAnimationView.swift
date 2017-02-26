@@ -248,7 +248,10 @@ class FallingAnimationView: UIView {
     // MARK: behaviors
     func collisionAll() {
         let collisionBehavior = UICollisionBehavior(items: animatedViews)
-        collisionBehavior.translatesReferenceBoundsIntoBoundary = true//❓
+        // This Collision Behavior flag was originaly set true,
+        // but it was causing the Views to drop to the bottom of the screen 
+        // and users had to do a second tap in order to finally remove the view.
+        collisionBehavior.translatesReferenceBoundsIntoBoundary = false//❓
         self.animator.addBehavior(collisionBehavior)
     }
     
